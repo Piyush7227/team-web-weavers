@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediBot AI - Healthcare Companion</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url('pexels-anniroenkae-3109850.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar */
+nav {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #a29bfe;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #6a11cb;
+}
+
+/* Header */
+header {
+    padding: 100px 20px 50px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    color: #a29bfe;
+}
+
+/* Sections */
+section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* AI Bot */
+textarea {
+    width: 100%;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 10px;
+    outline: none;
+}
+
+button {
+    margin-top: 10px;
+    padding: 12px;
+    width: 100%;
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #2575fc, #6a11cb);
+    box-shadow: 0px 0px 15px rgba(162, 155, 254, 0.7);
+}
+
+/* Quote Rotation */
+@keyframes fade {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+#quote {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    animation: fade 2s ease-in-out;
+}
+
+    </style>
+</head>
+<body>
+
+    
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/02/14/18/20250214182721-BQPUDOPK.js"></script>
+    
+
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#home">🏠 Home</a></li>
+            <li><a href="#bot">🤖 AI Assistant</a></li>
+            <li><a href="#knowledge">💡 Knowledge</a></li>
+            <li><a href="commondiseases.html">🦠 Common Diseases</a></li>
+            <li><a href="emergency.html">🚑emergency</a></li>
+            <li><a href=contactsss.html>📞 Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home">
+        <h1>🩺 MediBot AI</h1>
+        <p>Your AI-powered health companion</p>
+    </header>
+
+    <!-- Knowledge for the Day -->
+    <section id="knowledge" class="info-box">
+        <h2>💡 Knowledge for the Day</h2>
+        <p id="quote">"A healthy outside starts from the inside." - Robert Urich</p>
+    </section>
+
+    <!-- AI Health Assistant -->
+    <section id="bot" class="ai-box">
+        <h2>🤖 AI Health Assistant</h2>
+        <textarea id="symptomInput" placeholder="Describe your symptoms..."></textarea>
+        <button onclick="checkSymptoms()">Check Symptoms</button>
+        <div id="diagnosisOutput"></div>
+    </section>
+
+    <!-- Common Diseases -->
+    <section id="diseases" class="info-box">
+        <h2>🦠 Common Diseases</h2>
+        <ul>
+            <li><strong>Diabetes:</strong> Affects insulin levels, manage with diet & exercise.</li>
+            <li><strong>Hypertension:</strong> High blood pressure, reduced with a healthy lifestyle.</li>
+            <li><strong>Heart Disease:</strong> Leading cause of death, controlled by diet & medication.</li>
+        </ul>
+    </section>
+
+    <!-- Patient Reviews -->
+    <section id="reviews" class="info-box">
+        <h2>💬 Patient Reviews</h2>
+        <p>"MediBot helped me detect early symptoms of flu!" - Sarah J.</p>
+        <p>"Great AI insights, but needs a human doctor for confirmation." - Mark R.</p>
+    </section>
+
+    <script>
+        function checkSymptoms() {
+    const input = document.getElementById("symptomInput").value;
+    const output = document.getElementById("diagnosisOutput");
+
+    if (!input) {
+        output.innerHTML = "<p>Please enter symptoms!</p>";
+        return;
+    }
+
+    output.innerHTML = "<p>Analyzing symptoms...</p>";
+
+    setTimeout(() => {
+        output.innerHTML = `<h3>Possible Diagnosis:</h3>
+                            <p>Based on your input, symptoms could be mild cold or flu. Stay hydrated!</p>`;
+    }, 2000);
+}
+
+// Quotes Rotation
+const quotes = [
+    `"Take care of your body. It’s the only place you have to live." - Jim Rohn`,
+    `"The greatest wealth is health." - Virgil`,
+    `"It is health that is real wealth and not pieces of gold and silver." - Mahatma Gandhi`,
+    `"The groundwork for all happiness is good health." - Leigh Hunt`
+];
+
+let quoteIndex = 0;
+function rotateQuotes() {
+    document.getElementById("quote").innerText = quotes[quoteIndex];
+    quoteIndex = (quoteIndex + 1) % quotes.length;
+}
+
+// Rotate quote every 5 seconds
+setInterval(rotateQuotes, 5000);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediBot AI - Healthcare Companion</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url('pexels-anniroenkae-3109850.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar */
+nav {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #a29bfe;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #6a11cb;
+}
+
+/* Header */
+header {
+    padding: 100px 20px 50px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    color: #a29bfe;
+}
+
+/* Sections */
+section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Emergency Section */
+#emergency {
+    background: linear-gradient(to right, #2c003e, #000000);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+#hospitals-list {
+    margin-top: 20px;
+    text-align: left;
+    display: inline-block;
+}
+
+.hospital-card {
+    background: #333;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+input {
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    margin-top: 10px;
+    padding: 12px;
+    width: 100%;
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #2575fc, #6a11cb);
+    box-shadow: 0px 0px 15px rgba(162, 155, 254, 0.7);
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#home">🏠 Home</a></li>
+            <li><a href="#bot">🤖 AI Assistant</a></li>
+            <li><a href="#knowledge">💡 Knowledge</a></li>
+            <li><a href="#diseases">🦠 Common Diseases</a></li>
+            <li><a href="#reviews">💬 Reviews</a></li>
+            <li><a href="#contact">📞 Contact</a></li>
+            <li><a href="#emergency">🚑 Emergency</a></li>
+        </ul>
+    </nav>
+
+    <!-- Emergency Section -->
+    <section id="emergency">
+        <h2>🚑 Emergency - Find Nearby Hospitals</h2>
+        <p>Enter your address to find the nearest hospitals.</p>
+        <input type="text" id="user-address" placeholder="Enter your address...">
+        <button onclick="findHospitals()">Find Hospitals</button>
+        <div id="hospitals-list"></div>
+    </section>
+    
+    <script>
+        function findHospitals() {
+            let address = document.getElementById("user-address").value;
+            if (!address) {
+                alert("Please enter your address.");
+                return;
+            }
+            
+            const hospitals = [
+                { name: "City General Hospital", location: "1 km away" },
+                { name: "Sunrise Medical Center", location: "2 km away" },
+                { name: "Green Valley Hospital", location: "4 km away" }
+            ];
+            
+            let output = "<h2>Nearest Hospitals:</h2>";
+            hospitals.forEach(hospital => {
+                output += `
+                    <div class="hospital-card">
+                        <h3>${hospital.name}</h3>
+                        <p>Location: ${hospital.location}</p>
+                    </div>
+                `;
+            });
+            
+            document.getElementById("hospitals-list").innerHTML = output;
+        }
+    </script>
+</body>
+</html>
